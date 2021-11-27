@@ -26,7 +26,7 @@ class _EventsListState extends State<EventsList> {
 
     try{
       // make the request
-      Response response = await get(Uri.parse('https://www.robotevents.com/api/v2/events?per_page=50&page=$page'), headers: {
+      Response response = await get(Uri.parse('https://www.robotevents.com/api/v2/events?per_page=50&page=$page&start=${DateTime.now().toIso8601String().substring(0, 19) + '-04:00'}'), headers: {
         'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZDdiZmZmNzE3MjVjODhlNzk5YTAyMWFiNzBmMmE3MDk0ODgyZTlkZDhhMDczNWM1NzAwZmQ2MTQ0MTU1NTRhZDE0MDA5NzQ1M2VmNDg3ZjMiLCJpYXQiOjE2MzYwNDc2OTkuNjE4MjgwOSwibmJmIjoxNjM2MDQ3Njk5LjYxODI4NDksImV4cCI6MjU4MjczNjA5OS41NjE5NDUsInN1YiI6IjM4MDg5Iiwic2NvcGVzIjpbXX0.bpU2Nk74KUCMDNIPd_Y5zv5VYe34bP5Kg_3QOrmcDQcGi3g2RX16akj22DM-VCU-N55Nh_3ZGQUft-YFQWjfqZ55AmWCnkVEXcMw8jMZ-0-Y2HnBsXx6uI3ObPsm_AA1wLLHLOvWeubHtO1NwxhiWMWcFY7DZomOs-JN5Brn7b-_PUkOKiJR4HfHL5kce4KNIL8w2j5IS9tVngtq8-hvR7ENVwnUX1Rt5mH5teikymW07TXhtu2ATdCS3YB7ztu8-Oqvu14Irrwy7tFXm8VGKPQM62f_N1F3fXaa-uLZjwGFOjMeSw0a6pcRexkk-cPhmKp4hAjl-V4TBCuurEoVB7GtECuUH9S4iIAI5ArYbawEvoH8ovAlkZ1LMKtBdWwW7mNEm3O9mfN-mC60Xq0Z34UdaC6p-zvmOIO9LHEJ0Sjr2sERdVFFS3s1dYnhSADcQIUg_teAddqXkxGxIq9_gSu482u_ic53jOqwzAFNsgg_emjoUiYLwfYEW11-kzPAnEuNzIQB2sXWvnBrbfGv-6HXSSxWYswfsoYdKSoBMPWldERJF2xXkByynQHCmqfsRw8B0rAXQnIMkeERE1zX5YY4c_rzvyPL_c7TmOPTbhGlC9GuUR_C3LhWd3NYdQPo0YnhIguQyhJYc8oHSjSU-XEYjxiOk6UTCsFllreC2E4'
       });
       Map data = jsonDecode(response.body);
@@ -157,7 +157,7 @@ class _EventsListState extends State<EventsList> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 7,
                         child: Text(
                           'Name',
                           style: TextStyle(
@@ -179,7 +179,7 @@ class _EventsListState extends State<EventsList> {
                         ),
                       ),
                       Expanded(
-                        flex: 3,
+                        flex: 2,
                         child: Text(
                           'Location',
                           style: TextStyle(

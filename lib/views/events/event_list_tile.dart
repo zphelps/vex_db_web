@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vex_db_web/models/event.dart';
+import 'package:vex_db_web/views/event_details/event_details.dart';
 
 class EventListTile extends StatelessWidget {
   const EventListTile({required this.event});
@@ -20,9 +21,22 @@ class EventListTile extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 1,
-            child: Text(
-              event.name,
+            flex: 7,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) {
+                    return EventDetails(event: event);
+                  },
+                  transitionDuration: Duration.zero,
+                ));
+              },
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  event.name,
+                ),
+              ),
             ),
           ),
           Expanded(
